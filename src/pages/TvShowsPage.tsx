@@ -32,7 +32,7 @@ const TvShowsPage = () => {
 		const fetchGenres = async () => {
 			try {
 				const res = await getTvGenres()
-				setGenres(res.genres)
+				setGenres(res?.genres || [])
 			} catch (error) {
 				console.error("Error fetching genres:", error)
 			}
@@ -60,15 +60,15 @@ const TvShowsPage = () => {
 						response = await getPopularTv({ page })
 				}
 
-				let filteredShows = response.results
+				let filteredShows = response?.results || []
 				if (selectedGenre) {
 					filteredShows = filteredShows.filter((show: TvSeries) =>
-						show.genre_ids.includes(selectedGenre)
+						show.genre_ids?.includes(selectedGenre)
 					)
 				}
 
 				setTvShows(filteredShows)
-				setTotalPages(response.total_pages)
+				setTotalPages(response?.total_pages || 1)
 			} catch (error) {
 				console.error("Error fetching TV shows:", error)
 			} finally {

@@ -15,8 +15,8 @@ const PeoplePage = () => {
 			try {
 				setIsLoading(true)
 				const response = await getPopularPeople({ page })
-				setPeople(response.results)
-				setTotalPages(response.total_pages)
+				setPeople(response?.results || [])
+				setTotalPages(response?.total_pages || 1)
 			} catch (error) {
 				console.error("Error fetching people:", error)
 			} finally {

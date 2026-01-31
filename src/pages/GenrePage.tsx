@@ -63,8 +63,8 @@ const GenrePage = () => {
 					getMovieGenres(),
 					getTvGenres(),
 				])
-				setMovieGenres(movieRes.genres)
-				setTvGenres(tvRes.genres)
+				setMovieGenres(movieRes?.genres || [])
+				setTvGenres(tvRes?.genres || [])
 			} catch (error) {
 				console.error("Error fetching genres:", error)
 			}
@@ -94,8 +94,8 @@ const GenrePage = () => {
 						page,
 						"vote_count.gte": sortBy === "vote_average.desc" ? 100 : undefined,
 					})
-					setMovies(response.results)
-					setTotalPages(Math.min(response.total_pages, 500))
+					setMovies(response?.results || [])
+					setTotalPages(Math.min(response?.total_pages || 1, 500))
 				} else {
 					const response = await discoverTvShows({
 						with_genres: genreId,
@@ -103,8 +103,8 @@ const GenrePage = () => {
 						page,
 						"vote_count.gte": sortBy === "vote_average.desc" ? 100 : undefined,
 					})
-					setTvShows(response.results)
-					setTotalPages(Math.min(response.total_pages, 500))
+					setTvShows(response?.results || [])
+					setTotalPages(Math.min(response?.total_pages || 1, 500))
 				}
 			} catch (error) {
 				console.error("Error fetching content:", error)

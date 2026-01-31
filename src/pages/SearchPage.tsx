@@ -72,9 +72,9 @@ const SearchPage = () => {
 					response = await multiSearch(query, { page })
 			}
 
-			setResults(response.results)
-			setTotalPages(response.total_pages)
-			setTotalResults(response.total_results)
+			setResults(response?.results || [])
+			setTotalPages(response?.total_pages || 1)
+			setTotalResults(response?.total_results || 0)
 		} catch (error) {
 			console.error("Search error:", error)
 		} finally {

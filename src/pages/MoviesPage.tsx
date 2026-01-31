@@ -39,7 +39,7 @@ const MoviesPage = () => {
 		const fetchGenres = async () => {
 			try {
 				const res = await getMovieGenres()
-				setGenres(res.genres)
+				setGenres(res?.genres || [])
 			} catch (error) {
 				console.error("Error fetching genres:", error)
 			}
@@ -67,15 +67,15 @@ const MoviesPage = () => {
 						response = await getPopularMovies({ page })
 				}
 
-				let filteredMovies = response.results
+				let filteredMovies = response?.results || []
 				if (selectedGenre) {
 					filteredMovies = filteredMovies.filter((movie: Movie) =>
-						movie.genre_ids.includes(selectedGenre)
+						movie.genre_ids?.includes(selectedGenre)
 					)
 				}
 
 				setMovies(filteredMovies)
-				setTotalPages(response.total_pages)
+				setTotalPages(response?.total_pages || 1)
 			} catch (error) {
 				console.error("Error fetching movies:", error)
 			} finally {
