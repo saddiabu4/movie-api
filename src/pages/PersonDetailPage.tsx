@@ -6,18 +6,7 @@ import {
 import { Footer, LoadingSpinner, MovieCard, Navbar } from "@/components"
 import type { Movie, PersonDetails, TvSeries } from "@/types"
 import { formatDate, getProfileUrl, truncateText } from "@/utils/helpers"
-import {
-	ArrowLeft,
-	Calendar,
-	ExternalLink,
-	Film,
-	Instagram,
-	MapPin,
-	Share2,
-	Tv,
-	Twitter,
-	User,
-} from "lucide-react"
+import { ArrowLeft, Calendar, Film, MapPin, Tv, User } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 
