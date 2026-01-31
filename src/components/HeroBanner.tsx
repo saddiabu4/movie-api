@@ -27,7 +27,8 @@ const HeroBanner = ({ items, type }: HeroBannerProps) => {
 	const [isTransitioning, setIsTransitioning] = useState(false)
 	const [isMuted, setIsMuted] = useState(true)
 
-	const currentItem = items[currentIndex]
+	const safeItems = items || []
+	const currentItem = safeItems[currentIndex]
 	const title =
 		type === "movie"
 			? (currentItem as Movie)?.title
@@ -37,34 +38,38 @@ const HeroBanner = ({ items, type }: HeroBannerProps) => {
 			? (currentItem as Movie)?.release_date
 			: (currentItem as TvSeries)?.first_air_date
 
-	// Auto slide
-	useEffect(() => {
-		const timer = setInterval(() => {
-			handleNext()
-		}, 8000)
-		return () => clearInterval(timer)
-	}, [items.length])
-
 	const handlePrevious = () => {
-		if (isTransitioning) return
+		if (isTransitioning || safeItems.length === 0) return
 		setIsTransitioning(true)
-		setCurrentIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1))
+		setCurrentIndex((prev) => (prev === 0 ? safeItems.length - 1 : prev - 1))
 		setTimeout(() => setIsTransitioning(false), 700)
 	}
 
 	const handleNext = () => {
-		if (isTransitioning) return
+		if (isTransitioning || safeItems.length === 0) return
 		setIsTransitioning(true)
-		setCurrentIndex((prev) => (prev + 1) % items.length)
+		setCurrentIndex((prev) => (prev + 1) % safeItems.length)
 		setTimeout(() => setIsTransitioning(false), 700)
 	}
 
-	if (!currentItem) return null
+	// Auto slide
+	useEffect(() => {
+		if (safeItems.length === 0) return
+		const timer = setInterval(() => {
+			handleNext()
+		}, 8000)
+		return () => clearInterval(timer)
+	}, [safeItems.length])
+
+	// Early return if items is undefined or empty
+	if (safeItems.length === 0 || !currentItem) {
+		return null
+	}
 
 	return (
 		<div className='relative h-[85vh] md:h-[90vh] lg:h-screen w-full overflow-hidden'>
 			{/* Background Images with Parallax */}
-			{items.slice(0, 5).map((item, index) => (
+			{safeItems.slice(0, 5).map((item, index) => (
 				<div
 					key={item.id}
 					className={`absolute inset-0 transition-all duration-1000 ease-out ${
