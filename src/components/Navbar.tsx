@@ -40,7 +40,7 @@ const Navbar = () => {
 					{/* Logo */}
 					<Link to='/' className='flex-shrink-0 group'>
 						<h1 className='text-red-600 text-2xl md:text-3xl font-black tracking-wider logo-glow transition-all duration-300 group-hover:scale-105'>
-							NETFLIX
+							ATIF
 						</h1>
 					</Link>
 

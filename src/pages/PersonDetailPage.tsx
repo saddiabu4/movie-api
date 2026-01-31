@@ -145,21 +145,6 @@ const PersonDetailPage = () => {
 									alt={person.name}
 									className='w-full rounded-2xl shadow-2xl shadow-blue-900/30'
 								/>
-								{/* Social Links Overlay */}
-								<div className='absolute bottom-4 left-4 right-4 flex justify-center gap-3'>
-									<button className='p-3 bg-black/60 backdrop-blur-sm rounded-full text-white hover:bg-blue-600 transition-all hover:scale-110'>
-										<Instagram size={18} />
-									</button>
-									<button className='p-3 bg-black/60 backdrop-blur-sm rounded-full text-white hover:bg-blue-600 transition-all hover:scale-110'>
-										<Twitter size={18} />
-									</button>
-									<button className='p-3 bg-black/60 backdrop-blur-sm rounded-full text-white hover:bg-blue-600 transition-all hover:scale-110'>
-										<ExternalLink size={18} />
-									</button>
-									<button className='p-3 bg-black/60 backdrop-blur-sm rounded-full text-white hover:bg-blue-600 transition-all hover:scale-110'>
-										<Share2 size={18} />
-									</button>
-								</div>
 							</div>
 
 							{/* Personal Info Card */}

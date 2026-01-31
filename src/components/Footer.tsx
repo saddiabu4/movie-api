@@ -65,7 +65,7 @@ const Footer = () => {
 					<div className='col-span-2'>
 						<Link to='/' className='inline-block group'>
 							<h2 className='text-red-600 text-3xl font-black tracking-wider logo-glow transition-all group-hover:scale-105'>
-								NETFLIX
+								ATIF
 							</h2>
 						</Link>
 						<p className='text-gray-400 text-sm mt-4 max-w-xs leading-relaxed'>
@@ -175,13 +175,13 @@ const Footer = () => {
 								size={12}
 								className='text-red-500 fill-red-500 animate-pulse'
 							/>{" "}
-							by Netflix Clone
+							by Atif
 						</p>
 					</div>
 
 					<div className='mt-6 text-center'>
 						<p className='text-gray-600 text-xs'>
-							© {new Date().getFullYear()} Netflix Clone. All rights reserved.
+							© {new Date().getFullYear()} Atif. All rights reserved.
 							<br className='sm:hidden' />
 							<span className='hidden sm:inline'> • </span>
 							Data provided by{" "}
