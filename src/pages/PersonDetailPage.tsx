@@ -337,8 +337,8 @@ const PersonDetailPage = () => {
 									</button>
 								</div>
 
-								{/* Credits Grid */}
-								<div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
+								{/* Credits Grid - Centered */}
+								<div className='flex flex-wrap justify-center gap-4'>
 									{(activeTab === "movies" ? movieCredits : tvCredits)
 										.slice(0, 20)
 										.map((item, index) => (
@@ -350,6 +350,7 @@ const PersonDetailPage = () => {
 												<MovieCard
 													item={item}
 													type={activeTab === "movies" ? "movie" : "tv"}
+													size='small'
 												/>
 											</div>
 										))}

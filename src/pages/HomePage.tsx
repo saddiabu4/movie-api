@@ -114,19 +114,20 @@ const HomePage = () => {
 
 			{/* Movie & TV Rows */}
 			<div className='relative -mt-24 md:-mt-32 z-10 space-y-2'>
-				{/* Trending Section */}
+				{/* Trending Section - LARGE cards */}
 				<div className='pb-4'>
 					<MovieRow
 						title='🔥 Trending Now'
 						items={trendingAll.slice(0, 20)}
 						type='movie'
+						cardSize='large'
 					/>
 				</div>
 
 				{/* Movies Section */}
 				<div className='py-4 bg-gradient-to-b from-transparent via-gray-950/50 to-transparent'>
-					<div className='px-4 md:px-8 lg:px-12 mb-6'>
-						<h2 className='text-2xl md:text-3xl font-bold text-white flex items-center gap-3'>
+					<div className='px-4 md:px-8 lg:px-12 mb-6 text-center'>
+						<h2 className='text-2xl md:text-3xl font-bold text-white inline-flex items-center gap-3'>
 							<span className='w-1 h-8 bg-red-600 rounded-full' />
 							Movies
 						</h2>
@@ -135,46 +136,72 @@ const HomePage = () => {
 						title='🎬 Trending Movies'
 						items={trendingMovies}
 						type='movie'
+						cardSize='large'
 					/>
 					<MovieRow
 						title='🎥 Now Playing'
 						items={nowPlayingMovies}
 						type='movie'
+						cardSize='medium'
 					/>
 					<MovieRow
 						title='⭐ Popular Movies'
 						items={popularMovies}
 						type='movie'
+						cardSize='medium'
 					/>
 					<MovieRow
 						title='🏆 Top Rated Movies'
 						items={topRatedMovies}
 						type='movie'
+						cardSize='small'
 					/>
 					<MovieRow
 						title='🎞️ Upcoming Movies'
 						items={upcomingMovies}
 						type='movie'
+						cardSize='small'
 					/>
 				</div>
 
 				{/* TV Shows Section */}
 				<div className='py-4 bg-gradient-to-b from-transparent via-purple-950/20 to-transparent'>
-					<div className='px-4 md:px-8 lg:px-12 mb-6'>
-						<h2 className='text-2xl md:text-3xl font-bold text-white flex items-center gap-3'>
+					<div className='px-4 md:px-8 lg:px-12 mb-6 text-center'>
+						<h2 className='text-2xl md:text-3xl font-bold text-white inline-flex items-center gap-3'>
 							<span className='w-1 h-8 bg-purple-600 rounded-full' />
 							TV Shows
 						</h2>
 					</div>
-					<MovieRow title='📺 Trending TV Shows' items={trendingTv} type='tv' />
-					<MovieRow title='📡 Airing Today' items={airingTodayTv} type='tv' />
-					<MovieRow title='💫 Popular TV Shows' items={popularTv} type='tv' />
+					<MovieRow
+						title='📺 Trending TV Shows'
+						items={trendingTv}
+						type='tv'
+						cardSize='large'
+					/>
+					<MovieRow
+						title='📡 Airing Today'
+						items={airingTodayTv}
+						type='tv'
+						cardSize='medium'
+					/>
+					<MovieRow
+						title='💫 Popular TV Shows'
+						items={popularTv}
+						type='tv'
+						cardSize='medium'
+					/>
 					<MovieRow
 						title='🌟 Top Rated TV Shows'
 						items={topRatedTv}
 						type='tv'
+						cardSize='small'
 					/>
-					<MovieRow title='📺 On The Air' items={onTheAirTv} type='tv' />
+					<MovieRow
+						title='📺 On The Air'
+						items={onTheAirTv}
+						type='tv'
+						cardSize='small'
+					/>
 				</div>
 
 				{/* People Section */}

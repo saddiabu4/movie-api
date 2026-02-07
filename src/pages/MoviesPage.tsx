@@ -182,7 +182,7 @@ const MoviesPage = () => {
 				) : (
 					<>
 						{/* Results Count */}
-						<div className='flex items-center justify-between mb-6'>
+						<div className='flex items-center justify-center gap-4 mb-6'>
 							<p className='text-gray-400 text-sm'>
 								Showing{" "}
 								<span className='text-white font-semibold'>
@@ -190,20 +190,21 @@ const MoviesPage = () => {
 								</span>{" "}
 								results
 							</p>
+							<span className='text-gray-600'>•</span>
 							<p className='text-gray-500 text-sm'>
 								Page {page} of {Math.min(totalPages, 500)}
 							</p>
 						</div>
 
-						{/* Grid */}
-						<div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6'>
+						{/* Grid - Centered */}
+						<div className='flex flex-wrap justify-center gap-4 md:gap-6'>
 							{movies.map((movie, index) => (
 								<div
 									key={movie.id}
 									className='animate-fade-in'
 									style={{ animationDelay: `${index * 0.05}s` }}
 								>
-									<MovieCard item={movie} type='movie' />
+									<MovieCard item={movie} type='movie' size='small' />
 								</div>
 							))}
 						</div>

@@ -4,12 +4,21 @@ import { Bookmark, Play, Star } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
+export type CardSize = "large" | "medium" | "small"
+
 interface MovieCardProps {
 	item: Movie | TvSeries
 	type: "movie" | "tv"
+	size?: CardSize
 }
 
-const MovieCard = ({ item, type }: MovieCardProps) => {
+const sizeClasses: Record<CardSize, string> = {
+	large: "w-[180px] sm:w-[200px] md:w-[220px] lg:w-[240px]",
+	medium: "w-[160px] sm:w-[175px] md:w-[190px] lg:w-[200px]",
+	small: "w-[140px] sm:w-[150px] md:w-[160px] lg:w-[170px]",
+}
+
+const MovieCard = ({ item, type, size = "small" }: MovieCardProps) => {
 	const [isHovered, setIsHovered] = useState(false)
 	const [imageLoaded, setImageLoaded] = useState(false)
 
@@ -23,7 +32,7 @@ const MovieCard = ({ item, type }: MovieCardProps) => {
 	return (
 		<Link
 			to={`/${type}/${item.id}`}
-			className='group relative flex-shrink-0 w-[150px] sm:w-[170px] md:w-[190px] lg:w-[200px]'
+			className={`group relative flex-shrink-0 ${sizeClasses[size]}`}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
 		>

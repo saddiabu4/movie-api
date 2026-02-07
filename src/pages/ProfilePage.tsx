@@ -189,7 +189,7 @@ const ProfilePage = () => {
 					<div className='space-y-8'>
 						{/* Continue Watching */}
 						<div>
-							<div className='flex items-center justify-between mb-4'>
+							<div className='flex items-center justify-center gap-4 mb-4'>
 								<h2 className='text-xl md:text-2xl font-bold text-white'>
 									Continue Watching
 								</h2>
@@ -197,9 +197,14 @@ const ProfilePage = () => {
 									See All
 								</button>
 							</div>
-							<div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
+							<div className='flex flex-wrap justify-center gap-4'>
 								{mockWatchlist.slice(0, 5).map((movie) => (
-									<MovieCard key={movie.id} item={movie as any} type='movie' />
+									<MovieCard
+										key={movie.id}
+										item={movie as any}
+										type='movie'
+										size='small'
+									/>
 								))}
 							</div>
 						</div>
@@ -240,15 +245,20 @@ const ProfilePage = () => {
 				{/* Watchlist Tab */}
 				{activeTab === "watchlist" && (
 					<div>
-						<div className='flex items-center justify-between mb-6'>
+						<div className='flex items-center justify-center mb-6'>
 							<h2 className='text-xl md:text-2xl font-bold text-white'>
 								My List ({mockWatchlist.length})
 							</h2>
 						</div>
 						{mockWatchlist.length > 0 ? (
-							<div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6'>
+							<div className='flex flex-wrap justify-center gap-4 md:gap-6'>
 								{mockWatchlist.map((movie) => (
-									<MovieCard key={movie.id} item={movie as any} type='movie' />
+									<MovieCard
+										key={movie.id}
+										item={movie as any}
+										type='movie'
+										size='small'
+									/>
 								))}
 							</div>
 						) : (

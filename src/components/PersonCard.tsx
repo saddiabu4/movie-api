@@ -4,18 +4,27 @@ import { Film, User } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
+export type PersonCardSize = "large" | "medium" | "small"
+
 interface PersonCardProps {
 	person: Person
+	size?: PersonCardSize
 }
 
-const PersonCard = ({ person }: PersonCardProps) => {
+const sizeClasses: Record<PersonCardSize, string> = {
+	large: "w-[180px] sm:w-[210px] md:w-[240px] lg:w-[270px]",
+	medium: "w-[150px] sm:w-[180px] md:w-[200px] lg:w-[220px]",
+	small: "w-[140px] sm:w-[160px] md:w-[170px] lg:w-[180px]",
+}
+
+const PersonCard = ({ person, size = "small" }: PersonCardProps) => {
 	const [imageLoaded, setImageLoaded] = useState(false)
 	const [imageError, setImageError] = useState(false)
 
 	return (
 		<Link
 			to={`/person/${person.id}`}
-			className='group flex-shrink-0 w-[140px] sm:w-[160px] md:w-[170px]'
+			className={`group flex-shrink-0 ${sizeClasses[size]}`}
 		>
 			{/* Profile Image Container */}
 			<div className='relative overflow-hidden rounded-2xl aspect-[3/4] bg-gradient-to-br from-gray-800 to-gray-900 shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-purple-500/20 group-hover:scale-[1.02]'>
