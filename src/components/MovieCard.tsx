@@ -1,7 +1,7 @@
 import type { Movie, TvSeries } from "@/types"
 import { formatRating, formatYear, getImageUrl } from "@/utils/helpers"
-import { motion, AnimatePresence } from "framer-motion"
-import { Bookmark, Calendar, Heart, Play, Star, Sparkles } from "lucide-react"
+import { AnimatePresence, motion } from "framer-motion"
+import { Bookmark, Calendar, Heart, Play, Sparkles, Star } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
@@ -20,7 +20,12 @@ const sizeClasses: Record<CardSize, string> = {
 	small: "w-[150px] sm:w-[165px] md:w-[180px] lg:w-[195px]",
 }
 
-const MovieCard = ({ item, type, size = "small", index = 0 }: MovieCardProps) => {
+const MovieCard = ({
+	item,
+	type,
+	size = "small",
+	index = 0,
+}: MovieCardProps) => {
 	const [isHovered, setIsHovered] = useState(false)
 	const [imageLoaded, setImageLoaded] = useState(false)
 	const [isLiked, setIsLiked] = useState(false)
@@ -149,10 +154,7 @@ const MovieCard = ({ item, type, size = "small", index = 0 }: MovieCardProps) =>
 										setIsLiked(!isLiked)
 									}}
 								>
-									<Heart
-										size={14}
-										className={isLiked ? "fill-white" : ""}
-									/>
+									<Heart size={14} className={isLiked ? "fill-white" : ""} />
 								</motion.button>
 								<motion.button
 									whileHover={{ scale: 1.2 }}

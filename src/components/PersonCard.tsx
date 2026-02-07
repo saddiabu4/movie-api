@@ -1,6 +1,6 @@
 import type { Person } from "@/types"
 import { getProfileUrl } from "@/utils/helpers"
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { Award, Camera, Film, Heart, Sparkles, Star, User } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
@@ -131,7 +131,9 @@ const PersonCard = ({ person, size = "small", index = 0 }: PersonCardProps) => {
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 							>
-								<div className={`p-4 rounded-full bg-gradient-to-r ${gradientColor}`}>
+								<div
+									className={`p-4 rounded-full bg-gradient-to-r ${gradientColor}`}
+								>
 									<User size={40} className='text-white' />
 								</div>
 								<span className='text-gray-500 text-xs'>No Image</span>
@@ -183,10 +185,7 @@ const PersonCard = ({ person, size = "small", index = 0 }: PersonCardProps) => {
 									setIsLiked(!isLiked)
 								}}
 							>
-								<Heart
-									size={14}
-									className={isLiked ? "fill-white" : ""}
-								/>
+								<Heart size={14} className={isLiked ? "fill-white" : ""} />
 							</motion.button>
 						</div>
 
@@ -293,7 +292,9 @@ const PersonCard = ({ person, size = "small", index = 0 }: PersonCardProps) => {
 			>
 				<motion.h3
 					className={`text-white text-sm font-bold truncate transition-all duration-300 ${
-						isHovered ? "bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent" : ""
+						isHovered
+							? "bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent"
+							: ""
 					}`}
 				>
 					{person.name}
