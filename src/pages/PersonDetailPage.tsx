@@ -126,9 +126,9 @@ const PersonDetailPage = () => {
 
 					<div className='flex flex-col lg:flex-row gap-8 lg:gap-12'>
 						{/* Profile Section */}
-						<div className='lg:w-1/3 space-y-6'>
+						<div className='w-full lg:w-72 xl:w-80 shrink-0 space-y-6'>
 							{/* Profile Image */}
-							<div className='relative mx-auto lg:mx-0 w-64 md:w-72 lg:w-full max-w-sm'>
+							<div className='relative w-48 sm:w-56 md:w-64 lg:w-full mx-auto lg:mx-0'>
 								<img
 									src={getProfileUrl(person.profile_path, "h632")}
 									alt={person.name}
@@ -137,12 +137,12 @@ const PersonDetailPage = () => {
 							</div>
 
 							{/* Personal Info Card */}
-							<div className='bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 space-y-4'>
-								<h3 className='text-white text-lg font-bold mb-4'>
+							<div className='bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/10 space-y-3 sm:space-y-4'>
+								<h3 className='text-white text-base sm:text-lg font-bold mb-3 sm:mb-4'>
 									Personal Info
 								</h3>
 
-								<div className='space-y-4'>
+								<div className='space-y-3 sm:space-y-4'>
 									<div>
 										<p className='text-gray-500 text-xs uppercase tracking-wider'>
 											Known For
@@ -234,42 +234,44 @@ const PersonDetailPage = () => {
 						</div>
 
 						{/* Main Content */}
-						<div className='flex-1 space-y-8'>
+						<div className='flex-1 min-w-0 space-y-6 lg:space-y-8'>
 							{/* Name */}
-							<div>
-								<h1 className='text-4xl md:text-5xl lg:text-6xl font-black text-white'>
+							<div className='text-center lg:text-left'>
+								<h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white break-words'>
 									{person.name}
 								</h1>
-								<p className='text-blue-400 text-lg mt-2'>
+								<p className='text-blue-400 text-base lg:text-lg mt-2'>
 									{person.known_for_department}
 								</p>
 							</div>
 
 							{/* Stats */}
-							<div className='flex gap-6'>
+							<div className='flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6'>
 								<div className='text-center'>
-									<p className='text-3xl font-bold text-white'>
+									<p className='text-2xl sm:text-3xl font-bold text-white'>
 										{movieCredits.length}
 									</p>
-									<p className='text-gray-400 text-sm'>Movies</p>
+									<p className='text-gray-400 text-xs sm:text-sm'>Movies</p>
 								</div>
 								<div className='text-center'>
-									<p className='text-3xl font-bold text-white'>
+									<p className='text-2xl sm:text-3xl font-bold text-white'>
 										{tvCredits.length}
 									</p>
-									<p className='text-gray-400 text-sm'>TV Shows</p>
+									<p className='text-gray-400 text-xs sm:text-sm'>TV Shows</p>
 								</div>
 								<div className='text-center'>
-									<p className='text-3xl font-bold text-white'>
+									<p className='text-2xl sm:text-3xl font-bold text-white'>
 										{images.length}
 									</p>
-									<p className='text-gray-400 text-sm'>Photos</p>
+									<p className='text-gray-400 text-xs sm:text-sm'>Photos</p>
 								</div>
 							</div>
 
 							{/* Biography */}
-							<div className='bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10'>
-								<h3 className='text-white text-xl font-bold mb-4'>Biography</h3>
+							<div className='bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/10'>
+								<h3 className='text-white text-lg sm:text-xl font-bold mb-3 sm:mb-4'>
+									Biography
+								</h3>
 								{person.biography ? (
 									<div>
 										<p className='text-gray-300 leading-relaxed whitespace-pre-line'>
@@ -296,14 +298,16 @@ const PersonDetailPage = () => {
 							{/* Photos */}
 							{images.length > 0 && (
 								<div>
-									<h3 className='text-white text-xl font-bold mb-4'>Photos</h3>
-									<div className='flex gap-3 overflow-x-auto pb-4 scrollbar-hide'>
+									<h3 className='text-white text-lg sm:text-xl font-bold mb-3 sm:mb-4'>
+										Photos
+									</h3>
+									<div className='flex gap-2 sm:gap-3 overflow-x-auto pb-4 scrollbar-hide'>
 										{images.slice(0, 10).map((image, index) => (
 											<img
 												key={index}
 												src={getProfileUrl(image.file_path, "w185")}
 												alt={`${person.name} photo ${index + 1}`}
-												className='w-28 h-40 object-cover rounded-xl shrink-0 hover:scale-105 transition-transform cursor-pointer shadow-lg'
+												className='w-20 h-28 sm:w-28 sm:h-40 object-cover rounded-lg sm:rounded-xl shrink-0 hover:scale-105 transition-transform cursor-pointer shadow-lg'
 											/>
 										))}
 									</div>
@@ -312,33 +316,33 @@ const PersonDetailPage = () => {
 
 							{/* Credits Tabs */}
 							<div>
-								<div className='flex gap-2 mb-6'>
+								<div className='flex flex-wrap gap-2 mb-4 sm:mb-6'>
 									<button
 										onClick={() => setActiveTab("movies")}
-										className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+										className={`flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-sm sm:text-base font-semibold transition-all duration-300 ${
 											activeTab === "movies"
 												? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
 												: "bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10"
 										}`}
 									>
-										<Film size={18} />
+										<Film size={16} className='sm:w-[18px] sm:h-[18px]' />
 										Movies ({movieCredits.length})
 									</button>
 									<button
 										onClick={() => setActiveTab("tv")}
-										className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+										className={`flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-sm sm:text-base font-semibold transition-all duration-300 ${
 											activeTab === "tv"
 												? "bg-purple-600 text-white shadow-lg shadow-purple-600/30"
 												: "bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10"
 										}`}
 									>
-										<Tv size={18} />
+										<Tv size={16} className='sm:w-[18px] sm:h-[18px]' />
 										TV Shows ({tvCredits.length})
 									</button>
 								</div>
 
-								{/* Credits Grid - Centered */}
-								<div className='flex flex-wrap justify-center gap-4'>
+								{/* Credits Grid */}
+								<div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4'>
 									{(activeTab === "movies" ? movieCredits : tvCredits)
 										.slice(0, 20)
 										.map((item, index) => (
